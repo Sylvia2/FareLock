@@ -9,7 +9,9 @@ Page({
     takeSession: false,
     requestResult: '',
     array:[],
-    name:''
+    name:'',
+    ticket:{},
+    id:''
   },
 
   onLoad: function() {
@@ -60,33 +62,68 @@ Page({
 
   cutTicket:function(e){
     var that=this;
-    var id=e.target.id;
+    this.setData({
+      id:e.target.id
+    })
     const db = wx.cloud.database({
       env: 'farelock-hswna'
     })
-    db.collection('UserTicket').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-       "flightID":id,
-       "price":599,
-       "num":0,
-       "status":0
+    db.collection('FareLock').where({
+      _id:that.data.id
+    }).get({
+      success: res => {
+        console.log("sasas");
+        this.setData({
+          ticket: res.data[0]
+        });
+        db.collection('UserTicket').where({
+          _openid:that.data.userInfo._openid,
+          flightID:that.data.id
+        }).get({
+          success: res => {
+            if(res.data[0]==null){
+              db.collection('UserTicket').add({
+                // data 字段表示需新增的 JSON 数据
+                data: {
+                  "flightID": that.data.id,
+                  "price": that.data.ticket.price,
+                  "num": 0,
+                  "status": 0,
+                  "name": that.data.name
+                },
+                success: function (res) {
+                  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+                },
+                fail: console.error
+              })
+            }
+            var queryBean = {
+              "id": that.data.id,
+              "name": that.data.name
+            }
+            var queryString = JSON.stringify(queryBean);
+            console.log(queryString)
+            wx.navigateTo({
+              url: '/pages/cut/cut?queryBean=' + queryString,
+            })
+
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '查询记录失败'
+            })
+          }
+        })
       },
-      success: function (res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      },
-      fail: console.error
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+      }
     })
-    var queryBean={
-      "id":id,
-      "name": that.data.name
-    }
-    var queryString=JSON.stringify(queryBean);
-    console.log(queryString)
-    wx.navigateTo({
-      url: '/pages/cut/cut?queryBean=' + queryString,
-    })
+   
   }
 
 })

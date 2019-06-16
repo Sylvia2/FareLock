@@ -20,7 +20,7 @@
 />
 <text> 当前剩余票数：{{ticket.remain}}张 </text>
 <view class='cutWrapper' wx:if="{{hasCut==0}}">
-<button class='cut'>帮他砍价</button>
+<button class='cut' bindtap='cutNow'>帮他砍价</button>
 </view>
 <view  class='cutWrapper' wx:if="{{hasCut==1}}" >
 <button class='cut'>我也要参加</button>

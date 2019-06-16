@@ -6,21 +6,24 @@ Page({
    */
   data: {
     ticket:{},
-    hasCut:1,
+    hasCut:0,
     nickName:'',
     avatarUrl: './user-unlogin.png',
     userInfo:{},
+    id:'',
+    process:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     var bean=JSON.parse(options.queryBean)
     console.log(bean)
-    var id=bean.id
     this.setData({
-      nickName:bean.name
+      nickName:bean.name,
+      id:bean.id
     })
     // 获取用户信息
     wx.getSetting({
@@ -42,12 +45,52 @@ Page({
       env: 'farelock-hswna'
     })
     db.collection('FareLock').where({
-      _id: id
+      _id: that.data.id
     }).get({
       success: res => {
+        db.collection('CutRecord').where({
+          _openid:that.data.userInfo._openid,
+          name:that.data.nickName,
+          flightID:that.data.id
+        }).get({
+          success: res => {
+            if(res.data[0]!=null){
+              this.setData({
+                hasCut:1,
+              })
+            }
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '查询记录失败'
+            })
+          }
+        })
         this.setData({
           ticket: res.data[0]
         });
+        console.log(that.data.ticket)
+        db.collection('UserTicket').where({
+          name: that.data.nickName,
+          flightID: that.data.id
+        }).get({
+          success: res => {
+            if (res.data[0] != null) {
+              this.setData({
+                process: Math.floor(((that.data.ticket.price - res.data[0].price) / that.data.ticket.price)*100)
+              })
+              console.log(that.data.process)
+            }
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '查询记录失败'
+            })
+          }
+        })
+        
       },
       fail: err => {
         wx.showToast({
@@ -58,6 +101,79 @@ Page({
     })
 
   },
+
+cutNow:function(){
+  var that=this;
+  console.log(that.data.userInfo.nickName);
+  //砍了多少钱？
+  var price = Math.floor(Math.random()*10 + 10);
+  console.log(price);
+  const db = wx.cloud.database({
+    env: 'farelock-hswna'
+  })
+  db.collection('CutRecord').add({
+    // data 字段表示需新增的 JSON 数据
+    data: {
+      "amount": price,
+      "hasCut":1,
+      "name":that.data.nickName,
+      "flightID":that.data.id
+    },
+    success: function (res) {
+      // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+      console.log(res);
+      //更新用户的参加进度
+      var userID;
+      var newNum;
+      var newPrice;
+      var newstatus=0;
+      db.collection('UserTicket').where({
+        name:that.data.nickName,
+        flightID:that.data.id
+      }).get({
+        success: res => {
+          console.log(res.data[0]);
+          userID=res.data[0]._id;
+          newNum=res.data[0].num+1;
+          newPrice=res.data[0].price-price;
+          if(newPrice<=9){
+            newstatus=1;
+          }
+          console.log(userID);
+          db.collection('UserTicket').doc(userID).update({
+            // data 传入需要局部更新的数据
+            data: {
+              // 表示将 done 字段置为 true
+              num: newNum,
+              price: newPrice,
+              status: newstatus
+            },
+            success: console.log,
+            fail: console.error
+          })
+          wx.showToast({
+            title: '您已帮助该用户砍价成功', success: res => {
+              console.log('dsds');
+              //用onLoad周期方法重新加载，实现当前页面的刷新
+              wx.navigateTo({
+                url: '/pages/index/index',
+              })
+            }
+          })
+
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '查询记录失败'
+          })
+        }
+      })
+
+    },
+    fail: console.error
+  })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -105,6 +221,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log("dsdsds");
+    var that=this
+    var queryBean = {
+      "id": that.data.id,
+      "name": that.data.nickName
+    }
+    var queryString = JSON.stringify(queryBean);
+    console.log(queryString)
+    return {
+      title: '快来帮我砍价拿特价机票呀',
+      path: '/pages/cut/cut?queryBean='+queryString,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

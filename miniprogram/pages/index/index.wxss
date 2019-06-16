@@ -1,5 +1,9 @@
 /**index.wxss**/
 
+.container {
+  margin: 20rpx;
+}
+
 page {
   background: #f6f6f6;
   display: flex;
@@ -135,28 +139,64 @@ page {
   word-break: break-all;
 }
 
-.ticket{
+.ticket {
   margin-top: 10rpx;
   width: 100%;
   background: #f6f6f6;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: none;
-  border-right: none;
+  border-right: none; */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   transition: all 300ms ease;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 
-.cut{
- background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    /* padding: 15px 32px; */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.itemWrapper {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.ticketInfo {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.fromToInfo {
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.dateInfo {
+  font-size: 15px;
+}
+
+.ticketPrice {
+  flex: 0 0 auto;
+  font-size: 16px;
+  margin-right: 10rpx;
+}
+
+.cutButton {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0rpx;
 }

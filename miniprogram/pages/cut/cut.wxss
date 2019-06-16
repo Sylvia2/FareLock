@@ -44,11 +44,11 @@
 }
 
 .ticket {
-  width: 100%;
-  margin: 10px 0px 10px 0px;
   /* height: 50rpx; *//* width: 80%; *//* background: #f6f6f6; *//* border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1); */
+  width: 100%;
+  margin: 10px 0px 10px 0px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;

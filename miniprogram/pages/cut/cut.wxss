@@ -10,7 +10,9 @@
   margin: 20rpx;
 }
 
-.userinfo, .uploader, .tunnel {
+.userinfo,
+.uploader,
+.tunnel {
   margin: 20rpx 0rpx 20rpx 0rpx;
   width: 100%;
   border-left: none;
@@ -44,7 +46,7 @@
 }
 
 .ticket {
-  /* height: 50rpx; *//* width: 80%; *//* background: #f6f6f6; *//* border: 1px solid rgba(0, 0, 0, 0.1);
+  /* height: 50rpx; */ /* width: 80%; */ /* background: #f6f6f6; */ /* border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1); */
   width: 100%;
@@ -83,9 +85,9 @@
 
 .cut {
   margin: 20rpx 0rpx 20rpx 0rpx;
-  /* width: 80%; *//* background: #f6f6f6; *//* border: 1px solid rgba(0, 0, 0, 0.1);
+  /* width: 80%; */ /* background: #f6f6f6; */ /* border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1); *//* display: flex; *//*flex-direction: row;*/
+  border-right: 1px solid rgba(0, 0, 0, 0.1); */ /* display: flex; */ /*flex-direction: row;*/
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -96,7 +98,7 @@
 }
 
 .progressWrapper {
-  width: 100%;
+  width: calc(100vw - 40rpx);
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -112,6 +114,7 @@
   justify-content: flex-start;
   flex-wrap: nowrap;
   align-content: center;
+  margin-right: 10rpx;
 }
 
 .progress {
@@ -135,9 +138,9 @@
 }
 
 .cutButton {
-  background-color: #ff7f50; /* Green *//* border: none; */
+  background-color: #ff7f50; /* Green */ /* border: none; */
   color: white;
-  /* padding: 15px 32px; *//* text-align: center;
+  /* padding: 15px 32px; */ /* text-align: center;
   text-decoration: none;
   display: inline-block; */
   font-size: 16px;

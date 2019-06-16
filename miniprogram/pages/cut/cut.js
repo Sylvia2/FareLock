@@ -149,18 +149,17 @@ cutNow:function(){
               price: newPrice,
               status: newstatus
             },
-            success: console.log,
+            success: res=>{
+              wx.showToast({
+                title: '您已帮助该用户砍价成功', success: res => {
+                  console.log('dsds');
+                  //用onLoad周期方法重新加载，实现当前页面的刷新
+                }
+              })
+            },
             fail: console.error
           })
-          wx.showToast({
-            title: '您已帮助该用户砍价成功', success: res => {
-              console.log('dsds');
-              //用onLoad周期方法重新加载，实现当前页面的刷新
-              wx.navigateTo({
-                url: '/pages/index/index',
-              })
-            }
-          })
+          
 
         },
         fail: err => {
@@ -174,12 +173,16 @@ cutNow:function(){
     },
     fail: console.error
   })
+  wx.redirectTo({
+    url: '/pages/index/index',
+  })
 },
 
   canjia:function(){
+    console.log("dada")
     wx.redirectTo({
       url: '/pages/index/index',
-    })
+    });
   },
 
   /**
@@ -214,7 +217,6 @@ cutNow:function(){
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**

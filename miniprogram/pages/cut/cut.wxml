@@ -1,4 +1,5 @@
 <view class="container">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
   <text class="userinfo" space="emsp">{{nickName}}: \n 我正在参与特价机票的砍价</text>
   <view class="ticket">
     <view class="ticketInfo">
@@ -10,7 +11,7 @@
   <view class="cut">
     <view class="progressWrapper">
       <view class="progressInfoWrapper">
-        <progress class="progress" border-radius="10px" percent="40" stroke-width="25rpx" color="#FF7F50" />
+        <progress class="progress" border-radius="10px" percent="{{process}}" stroke-width="25rpx" color="#FF7F50" />
         <text class="progressInfo">当前剩余票数</text>
       </view>
       <text class="progressValue">{{ticket.remain}}张</text>

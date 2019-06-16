@@ -8,7 +8,8 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    array:[]
+    array:[],
+    name:''
   },
 
   onLoad: function() {
@@ -28,14 +29,14 @@ Page({
             success: res => {
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
+                userInfo: res.userInfo,
+                name:res.userInfo.nickName
               })
             }
           })
         }
       }
     })
-
     const db = wx.cloud.database({
       env: 'farelock-hswna'
     })
@@ -57,20 +58,34 @@ Page({
     })
   },
 
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
-  },
-
   cutTicket:function(e){
+    var that=this;
     var id=e.target.id;
+    const db = wx.cloud.database({
+      env: 'farelock-hswna'
+    })
+    db.collection('UserTicket').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+       "flightID":id,
+       "price":599,
+       "num":0,
+       "status":0
+      },
+      success: function (res) {
+        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        console.log(res)
+      },
+      fail: console.error
+    })
+    var queryBean={
+      "id":id,
+      "name": that.data.name
+    }
+    var queryString=JSON.stringify(queryBean);
+    console.log(queryString)
     wx.navigateTo({
-      url: '/pages/cut/cut?id='+id,
+      url: '/pages/cut/cut?queryBean=' + queryString,
     })
   }
 

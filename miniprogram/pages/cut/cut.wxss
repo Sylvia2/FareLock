@@ -1,40 +1,78 @@
 /* miniprogram/pages/cut/cut.wxss */
 @import "../../style/guide.wxss";
 
+.userinfo, .uploader, .tunnel {
+  margin-top: 40rpx;
+  height: 140rpx;
+  width: 100%;
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+.userinfo-nickname {
+  font-size: 32rpx;
+  color: #007aff;
+  background-color: white;
+  background-size: cover;
+}
+
+.userinfo-nickname::after {
+  border: none;
+}
 .ticket{
   margin-top: 10rpx;
   height: 100%;
-  width: 100%;
+  width: 80%;
   background: #f6f6f6;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap:nowrap;
   align-items: center;
   transition: all 300ms ease;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 
 .cutNow{
   margin-top: 10rpx;
   height: 150px;
-  width: 100%;
+  width: 80%;
   background: #f6f6f6;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   /* display: flex; */
   /*flex-direction: row;*/
-  align-items: right;
+   flex-direction: row;
+  flex-wrap:nowrap;
+  align-items: center;
   transition: all 300ms ease;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 
 .priceText{
-  
+
   font-weight: bold;
   color:#FF7F50;
 }

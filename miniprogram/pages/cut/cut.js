@@ -6,14 +6,38 @@ Page({
    */
   data: {
     ticket:{},
-    hasCut:1
+    hasCut:1,
+    nickName:'',
+    avatarUrl: './user-unlogin.png',
+    userInfo:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var id=options.id;
+    var bean=JSON.parse(options.queryBean)
+    console.log(bean)
+    var id=bean.id
+    this.setData({
+      nickName:bean.name
+    })
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo:res.userInfo
+              })
+            }
+          })
+        }
+      }
+    })
     const db = wx.cloud.database({
       env: 'farelock-hswna'
     })
@@ -21,7 +45,6 @@ Page({
       _id: id
     }).get({
       success: res => {
-        console.log(res);
         this.setData({
           ticket: res.data[0]
         });
@@ -33,6 +56,7 @@ Page({
         })
       }
     })
+
   },
 
   /**

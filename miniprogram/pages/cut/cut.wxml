@@ -1,5 +1,14 @@
 <view class='container'>
 <view class='userinfo'>
+ <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <open-data type="userNickName"></open-data>
+    </view>
+<view>
 <text>\n {{nickName}}正在参与特价机票的砍价</text>
 </view>
 <view class='ticket'>

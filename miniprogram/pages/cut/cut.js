@@ -54,6 +54,7 @@ Page({
           flightID:that.data.id
         }).get({
           success: res => {
+            console.log(res)
             if(res.data[0]!=null){
               this.setData({
                 hasCut:1,

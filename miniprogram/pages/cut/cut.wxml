@@ -1,5 +1,5 @@
 <view class="container">
-  <text class="userinfo" space="emsp">xxxxxx: \n 我正在参与特价机票的砍价</text>
+  <text class="userinfo" space="emsp">{{nickName}}: \n 我正在参与特价机票的砍价</text>
   <view class="ticket">
     <view class="ticketInfo">
       <text class="fromToInfo">{{ticket.from}} -> {{ticket.to}}</text>
@@ -16,11 +16,11 @@
       <text class="progressValue">{{ticket.remain}}张</text>
     </view>
     <view class="cutButtonWrapper" wx:if="{{hasCut==0}}">
-      <button class="cutButton">帮他砍价</button>
+      <button class="cutButton" bindtap='cutNow'>帮他砍价</button>
     </view>
     <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
-      <button class="cutButton">我也要参加</button>
+      <button class="cutButton" bindtap='canjia'>我也要参加</button>
     </view>
   </view>
 </view>
-<text class="tips" space="emsp">说明:\n 1.xxxxxxx\n 2.xxxxxxxx\n 3.xxxxxxxxxx\n 4.xxxxxxxxxxxxx</text>
+<text class="tips" space="emsp">说明:\n 1.每人每个航班只能参加一次\n 2.完成砍价后，即可购买\n 3.任何疑问欢迎致电800800800\n 4.最终解释权归FareLock票多多所有</text>

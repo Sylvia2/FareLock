@@ -1,0 +1,28 @@
+<view class='container'>
+<view>您正在参与特价机票的砍价</view>
+<view class='ticket'>
+  <text class="normalText">
+    {{ticket.from}} TO {{ticket.to}} | {{ticket.date}} 
+  </text>
+  <text class="priceText">
+    ￥{{ticket.price}}
+  </text>
+</view>
+</view>
+<view class='cutNow'>
+<progress 
+  class='progress'
+  border-radius="10px" 
+  percent="40"
+  stroke-width="30px" 
+  color='#FF7F50'
+/>
+<text>\n </text>
+<view class='cutWrapper' wx:if="{{hasCut==0}}">
+<button class='cut'>帮他砍价</button>
+</view>
+<view  class='cutWrapper' wx:if="{{hasCut==1}}" >
+<button class='cut'>我也要参加</button>
+</view>
+ 
+</view>

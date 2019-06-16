@@ -1,38 +1,26 @@
-<view class='container'>
-<view class='userinfo'>
- <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <open-data type="userNickName"></open-data>
+<view class="container">
+  <text class="userinfo" space="emsp">xxxxxx: \n 我正在参与特价机票的砍价</text>
+  <view class="ticket">
+    <view class="ticketInfo">
+      <text class="fromToInfo">{{ticket.from}} -> {{ticket.to}}</text>
+      <text class="dateInfo">{{ticket.date}}</text>
     </view>
-<view>
-<text>\n {{nickName}}正在参与特价机票的砍价</text>
+    <text class="ticketPrice">￥{{ticket.price}}</text>
+  </view>
+  <view class="cut">
+    <view class="progressWrapper">
+      <view class="progressInfoWrapper">
+        <progress class="progress" border-radius="10px" percent="40" stroke-width="25rpx" color="#FF7F50" />
+        <text class="progressInfo">当前剩余票数</text>
+      </view>
+      <text class="progressValue">{{ticket.remain}}张</text>
+    </view>
+    <view class="cutButtonWrapper" wx:if="{{hasCut==0}}">
+      <button class="cutButton">帮他砍价</button>
+    </view>
+    <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
+      <button class="cutButton">我也要参加</button>
+    </view>
+  </view>
 </view>
-<view class='ticket'>
-  <text class="normalText">
-    {{ticket.from}} TO {{ticket.to}} | {{ticket.date}} 
-  </text>
-  <text class="priceText">
-    ￥{{ticket.price}}
-  </text>
-</view>
-<view class='cutNow'>
-<progress 
-  class='progress'
-  border-radius="10px" 
-  percent="40"
-  stroke-width="30px" 
-  color='#FF7F50'
-/>
-<text> 当前剩余票数：{{ticket.remain}}张 </text>
-<view class='cutWrapper' wx:if="{{hasCut==0}}">
-<button class='cut' bindtap='cutNow'>帮他砍价</button>
-</view>
-<view  class='cutWrapper' wx:if="{{hasCut==1}}" >
-<button class='cut'>我也要参加</button>
-</view>
-</view>
-</view>
+<text class="tips" space="emsp">说明:\n 1.xxxxxxx\n 2.xxxxxxxx\n 3.xxxxxxxxxx\n 4.xxxxxxxxxxxxx</text>

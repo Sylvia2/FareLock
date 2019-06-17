@@ -18,13 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var bean=JSON.parse(options.queryBean)
-    console.log(bean)
-    this.setData({
-      nickName:bean.name,
-      id:bean.id
-    })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -36,10 +29,18 @@ Page({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo:res.userInfo
               })
+              
             }
           })
         }
       }
+    })
+    var that = this
+    var bean = JSON.parse(options.queryBean)
+    console.log(bean)
+    this.setData({
+      nickName: bean.name,
+      id: bean.id
     })
     const db = wx.cloud.database({
       env: 'farelock-hswna'

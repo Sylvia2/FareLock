@@ -80,7 +80,7 @@
   /*flex*/
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
 }
@@ -97,7 +97,7 @@
 .buyButtonWrapper {
   flex: 0 0 auto;
   width: calc(100% - 180rpx);
-  margin: 10rpx;
+  margin: 20rpx;
   display: block;
 }
 

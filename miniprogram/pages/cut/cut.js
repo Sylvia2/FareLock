@@ -27,9 +27,30 @@ Page({
             success: res => {
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo:res.userInfo
+                userInfo: res.userInfo
               })
-              
+
+            }
+          })
+        } else {
+          wx.login({
+            success: function () {
+              wx.getSetting({
+                success: res => {
+                  if (res.authSetting['scope.userInfo']) {
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                    wx.getUserInfo({
+                      success: res => {
+                        this.setData({
+                          avatarUrl: res.userInfo.avatarUrl,
+                          userInfo: res.userInfo
+                        })
+
+                      }
+                    })
+                  }
+                }
+              })
             }
           })
         }
@@ -38,7 +59,7 @@ Page({
     var that = this
     var bean = JSON.parse(options.queryBean)
     console.log(bean)
-    this.setData({
+    that.setData({
       nickName: bean.name,
       id: bean.id
     })
@@ -69,7 +90,7 @@ Page({
             })
           }
         })
-        this.setData({
+        that.setData({
           ticket: res.data[0]
         });
         console.log(that.data.ticket)
@@ -79,7 +100,7 @@ Page({
         }).get({
           success: res => {
             if (res.data[0] != null) {
-              this.setData({
+              that.setData({
                 process: Math.floor(((that.data.ticket.price - res.data[0].price) / that.data.ticket.price)*100)
               })
               console.log(that.data.process)

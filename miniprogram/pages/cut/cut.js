@@ -180,9 +180,15 @@ cutNow:function(){
 
   canjia:function(){
     console.log("dada")
-    wx.redirectTo({
+    wx.switchTab({
       url: '/pages/index/index',
     });
+  },
+
+  buy:function(){
+    wx.navigateTo({
+      url: '/pages/buy/buy',
+    })
   },
 
   /**

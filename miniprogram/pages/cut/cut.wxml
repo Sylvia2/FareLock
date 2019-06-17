@@ -22,6 +22,9 @@
     <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
       <button class="cutButton" bindtap='canjia'>我也要参加</button>
     </view>
+    <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
+      <button class="cutButton" bindtap='buy'>购买</button>
+    </view>
   </view>
 </view>
 <text class="tips" space="emsp">说明:\n 1.每人每个航班只能参加一次\n 2.完成砍价后，即可购买\n 3.任何疑问欢迎致电800800800\n 4.最终解释权归FareLock票多多所有</text>

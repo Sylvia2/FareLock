@@ -5,14 +5,83 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 0
+    currentTab: 0,
+    avatarUrl: './user-unlogin.png',
+    userInfo: {},
+    array:[],
+    buyArray:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo
+              })
 
+            }
+          })
+        } else {
+          wx.login({
+            success: function () {
+              wx.getSetting({
+                success: res => {
+                  if (res.authSetting['scope.userInfo']) {
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                    wx.getUserInfo({
+                      success: res => {
+                        this.setData({
+                          avatarUrl: res.userInfo.avatarUrl,
+                          userInfo: res.userInfo
+                        })
+
+                      }
+                    })
+                  }
+                }
+              })
+            }
+          })
+        }
+        var that = this;
+        console.log(that.data);
+        const db = wx.cloud.database({
+          env: 'farelock-hswna'
+        })
+        db.collection('UserTicket').where({
+          name: that.data.userInfo.nickName
+        }).get({
+          success: function (a) {
+            that.setData({
+              array: a.data
+            })
+          },
+          fail: console.error
+        })
+
+        db.collection('BuyTicket').where({
+          _openid: that.data.userInfo._openid
+        }).get({
+          success: function (a) {
+            that.setData({
+              a: a.data
+            })
+          },
+          fail: console.error
+        })
+
+
+
+      }
+    })
   },
 
   /**

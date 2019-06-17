@@ -52,12 +52,14 @@ Page({
                       }
                     })
                   }
+                }
+              })
             }
           })
-        }
-      })
-        }
-  }})},
+        } 
+      }
+    }
+  )},
 
 buyTicket:function(e){
   var that=this;

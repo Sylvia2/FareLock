@@ -154,6 +154,9 @@ cutNow:function(){
                 title: '您已帮助该用户砍价成功', success: res => {
                   console.log('dsds');
                   //用onLoad周期方法重新加载，实现当前页面的刷新
+                  wx.switchTab({
+                    url: '/pages/index/index',
+                  })
                 }
               })
             },

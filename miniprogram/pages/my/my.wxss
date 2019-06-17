@@ -114,79 +114,30 @@
   border-radius: 10rpx;
   background-color: white;
   box-shadow: 0px 5rpx 30rpx gray;
+  display: block;
+}
+
+.ticketOrder, .ticketFlight {
+  font-size: 15px;
+  font-style: bold;
+  margin: 5rpx;
+}
+
+.ticketPassengerPhone, .ticketNumPrice {
+  margin: 5rpx;
   /*flex*/
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  align-items: stretch;
-}
-
-.ticketLeftInfo {
-  flex: 1 0 auto;
-  margin: 15rpx;
-  /*flex*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-}
-
-.fromToInfo {
-  margin: 5rpx;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.dateInfo {
-  margin: 5rpx;
-  font-size: 15px;
-}
-
-.ticketRightInfo {
-  flex: 0 0 auto;
-  margin: 15rpx;
-  /*flex*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-}
-
-.ticketPrice {
-  flex: 0 0 auto;
-  font-size: 16px;
-  margin: 5rpx;
-  background-color: #fda;
-  text-decoration: line-through;
-}
-
-.ticketCount {
-  flex: 0 0 auto;
-  font-size: 15px;
-  margin: 5rpx;
-}
-
-.cutButton {
-  flex: 0 0 150rpx;
-  background-color: #f80;
-  /*flex*/
-  display: flex;
-  flex-direction: center;
   align-items: center;
+  justify-content: space-between;
 }
 
-.cutButtonText {
-  height: auto;
-  color: white;
-  text-align: center;
+.ticketPassenger, .ticketPhone, .ticketNum, .ticketPrice {
+  flex: 0 0 auto;
   font-size: 16px;
 }
 
 /****************************************/
-
 
 .tips {
   flex: 0 0 auto;
@@ -198,6 +149,7 @@
   font-size: 14px;
   margin: 20rpx 40rpx 20rpx 40rpx;
   color: gray;
+  background-color: yellow;
 }
 
 /****************************************/

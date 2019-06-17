@@ -5,7 +5,7 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <text class="slogan">{{nickName}}: \n填写个人信息</text>
+    <text class="slogan">{{userInfo.nickName}}: \n填写个人信息</text>
   </view>
 
   <!-- 信息填写 -->
@@ -14,21 +14,21 @@
       <!-- 姓名 -->
       <view class="inputName">
         <view>姓名</view>
-        <input class="input" confirm-type="next" placeholder="Name"></input>
+        <input class="input"  placeholder="Name" bindinput='getName'></input>
       </view>
       <!-- 身份证 -->
       <view class="inputID">
         <view>身份证</view>
-        <input class="input" confirm-type="next" placeholder="ID Card"></input>
+        <input class="input"  placeholder="ID Card" bindinput='getID'></input>
       </view>
       <!-- 手机号 -->
       <view class="inputPhone">
         <view>手机号</view>
-        <input class="input" confirm-type="done" placeholder="Phone"></input>
+        <input class="input"  placeholder="Phone" bindinput='getPhone'></input>
       </view>
       <!-- 按钮 -->
       <view class="buyButtonWrapper">
-        <button class="buyButton">提交</button>
+        <button class="buyButton" bindtap='buyTicket' form-type='submit'>提交</button>
       </view>
     </view>
   </view>

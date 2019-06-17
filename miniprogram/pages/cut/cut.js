@@ -177,9 +177,6 @@ cutNow:function(){
     },
     fail: console.error
   })
-  wx.redirectTo({
-    url: '/pages/index/index',
-  })
 },
 
   canjia:function(){
@@ -190,8 +187,9 @@ cutNow:function(){
   },
 
   buy:function(){
+    var that=this;
     wx.navigateTo({
-      url: '/pages/buy/buy',
+      url: '/pages/buy/buy?FlightId='+that.data.id,
     })
   },
 

@@ -96,11 +96,13 @@
 }
 
 .fromToInfo {
+  margin: 5rpx;
   font-weight: bold;
   font-size: 18px;
 }
 
 .dateInfo {
+    margin: 5rpx;
   font-size: 15px;
 }
 
@@ -118,7 +120,7 @@
 .ticketPrice {
   flex: 0 0 auto;
   font-size: 16px;
-  margin-right: 10rpx;
+  margin: 5rpx;
   background-color: #fda;
   text-decoration: line-through;
 }
@@ -126,7 +128,7 @@
 .ticketCount {
   flex: 0 0 auto;
   font-size: 15px;
-  margin-right: 10rpx;
+  margin: 5rpx;
 }
 
 .cutButton {

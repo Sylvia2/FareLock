@@ -86,7 +86,7 @@
 .ticket, .progressBox, .button {
   flex: 0 0 auto;
   width: calc(100% - 180rpx);
-  margin: 90rpx;
+  margin: 10rpx;
   display: block;
 }
 

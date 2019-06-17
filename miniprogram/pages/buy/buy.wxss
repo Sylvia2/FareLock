@@ -1,1 +1,125 @@
 /* miniprogram/pages/buy/buy.wxss */
+
+/* miniprogram/pages/buy/buy.wxss */
+@import "../../style/guide.wxss";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0rpx;
+  padding: 0rpx;
+  background-color: rgb(246, 246, 246);
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/****************************************/
+
+.userInfo {
+  flex: 0 0 auto;
+  width: 100vw;
+  background-color: rgb(246, 246, 246);
+  z-index: 2000;
+  /* flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.userAvatar {
+  flex: 0 0 auto;
+  margin: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+.slogan {
+  flex: 1 0 auto;
+  margin: 20rpx 20rpx 20rpx 0rpx;
+}
+
+/****************************************/
+
+.buyPanel {
+  flex: 1 0 300rpx;
+  width: 100vw;
+  background-color: white;
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.buyCard {
+  flex: 0 0 98%;
+  width: 95vw;
+  margin: 40rpx;
+  border-radius: 10rpx;
+  border-left: 10rpx solid #fb6;
+  background-color: white;
+  box-shadow: 0px 5rpx 30rpx gray;
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.input {
+  border: 3rpx solid #fb6;
+  border-radius: 10rpx;
+  padding: 15rpx;
+}
+
+.inputName,
+.inputID,
+.inputPhone,
+.buyButtonWrapper {
+  flex: 0 0 auto;
+  width: calc(100% - 180rpx);
+  margin: 10rpx;
+  display: block;
+}
+
+.buyButton {
+  background-color: #ff7f50;
+  color: white;
+  font-size: 20px;
+  margin: 0rpx;
+}
+
+/****************************************/
+
+.tips {
+  flex: 0 0 auto;
+  width: 100vw;
+  background-color: rgb(246, 246, 246);
+}
+
+.tipsText {
+  font-size: 14px;
+  margin: 20rpx 40rpx 20rpx 40rpx;
+  color: gray;
+}
+
+/****************************************/

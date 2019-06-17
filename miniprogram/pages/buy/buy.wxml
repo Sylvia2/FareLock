@@ -1,2 +1,40 @@
 <!--miniprogram/pages/buy/buy.wxml-->
-<text>购买填写个人信息</text>
+<view class="container">
+  <!-- user  -->
+  <view class="userInfo">
+    <view class="userAvatar">
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+    </view>
+    <text class="slogan">{{nickName}}: \n填写个人信息</text>
+  </view>
+
+  <!-- 信息填写 -->
+  <view class="buyPanel">
+    <view class="buyCard">
+      <!-- 姓名 -->
+      <view class="inputName">
+        <view>姓名</view>
+        <input class="input" confirm-type="next" placeholder="Name"></input>
+      </view>
+      <!-- 身份证 -->
+      <view class="inputID">
+        <view>身份证</view>
+        <input class="input" confirm-type="next" placeholder="ID Card"></input>
+      </view>
+      <!-- 手机号 -->
+      <view class="inputPhone">
+        <view>手机号</view>
+        <input class="input" confirm-type="done" placeholder="Phone"></input>
+      </view>
+      <!-- 按钮 -->
+      <view class="buyButtonWrapper">
+        <button class="buyButton">提交</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 说明 -->
+  <view class="tips">
+    <text class="tipsText" space="emsp">说明:\n  1.每人每个航班只能参加一次\n  2.完成砍价后，即可购买\n  3.任何疑问欢迎致电800800800\n  4.最终解释权归FareLock票多多所有</text>
+  </view>
+</view>

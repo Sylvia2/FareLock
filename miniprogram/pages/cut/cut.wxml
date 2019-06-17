@@ -4,7 +4,8 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <text class="slogan">{{nickName}}: \n我正在参与特价机票的砍价</text>
+    <open-data type="userNickName" lang="zh_CN"></open-data>
+    <view class="slogan">:\n我正在参与特价机票的砍价</view>
   </view>
 
   <!-- 秒杀 -->

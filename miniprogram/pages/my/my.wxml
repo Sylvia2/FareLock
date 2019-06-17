@@ -27,8 +27,11 @@
     <view class="ticket" wx:for="{{array}}">
       <view class="ticketLeftInfo">
       <view>航班号：{{item.flightID}}</view>
+      <view>出发地:{{item.from}}</view>
+       <view>目的地:{{item.to}}</view>
         <view class="fromToInfo">已有{{item.num}}人帮你砍价</view>
         <view class="dateInfo">现价:{{item.price}}</view>
+         <view class="dateInfo">原价:{{item.originPrice}}</view>
       </view>
     </view>
     </view>

@@ -5,7 +5,7 @@
       <text class="fromToInfo">{{ticket.from}} -> {{ticket.to}}</text>
       <text class="dateInfo">{{ticket.date}}</text>
     </view>
-    <text class="ticketPrice">￥{{ticket.price}}</text>
+    <text class="ticketPrice">{{ticket.price}}元</text>
   </view>
   <view class="cut">
     <view class="progressWrapper">
@@ -23,4 +23,5 @@
     </view>
   </view>
 </view>
-<text class="tips" space="emsp">说明:\n 1.每人每个航班只能参加一次\n 2.完成砍价后，即可购买\n 3.任何疑问欢迎致电800800800\n 4.最终解释权归FareLock票多多所有</text>
+<text class="tips" space="emsp">说明:\n 1.每人每个航班只能参加一次\n 2.完成砍价后，即可购买\n 3.任何疑问欢迎致电800800800\n 4.最终解释权归FareLock票多多所有
+</text>

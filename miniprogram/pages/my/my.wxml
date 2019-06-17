@@ -37,6 +37,8 @@
       <view class="ticket" wx:for="{{buyArray}}">
       <view>订单号：{{item._id}}</view>
        <view>航班号:{{item.flightID}}</view>
+       <view>出发地:{{item.from}}</view>
+       <view>目的地:{{item.to}}</view>
       <view>乘机人：{{item.name}}</view>
       <view>联系方式:{{item.phone}}</view>
       </view>

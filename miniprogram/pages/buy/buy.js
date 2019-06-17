@@ -67,40 +67,28 @@ buyTicket:function(e){
   const db = wx.cloud.database({
     env: 'farelock-hswna'
   })
-  db.collection('BuyTicket').add({
-    // data 字段表示需新增的 JSON 数据
-    data: {
-      "flightID": that.data.flightID,
-      "name": that.data.name,
-      "cardID": that.data.idCard,
-      "phone": that.data.phone,
-    },
-    success: function (res) {
-      // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-      console.log(res._id);
-      //减少库存
-      db.collection('FareLock').where({
-        _id:that.data.flightID
-      }).get({
-        success: function(a) {
-          var newValue=a.data[0].remain-1;
-          console.log(newValue);
-          var id=a.data[0]._id;
-          db.collection('FareLock').doc(id).update({
-            // data 传入需要局部更新的数据
-            data: {
-              remain: 8
-            },
-            success: b => {
-              console.log(b);
-            },
-            fail: console.error
+  db.collection('FareLock').where({
+    _id: that.data.flightID
+  }).get({
+    success: function (a) {
+      db.collection('BuyTicket').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          "flightID": that.data.flightID,
+          "name": that.data.name,
+          "cardID": that.data.idCard,
+          "phone": that.data.phone,
+          "from":a.data[0].from,
+          "to":a.data[0].to
+        },
+        success: function (res) {
+          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+          console.log(res._id);
+          wx.switchTab({
+            url: '/pages/my/my',
           })
         },
         fail: console.error
-      })
-      wx.switchTab({
-        url: '/pages/my/my',
       })
     },
     fail: console.error

@@ -6,9 +6,11 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <open-data type="userNickName" lang="zh_CN"></open-data>
+    <view class="slogan">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+      <view>我正在参与特价机票的砍价</view>
+    </view>
   </view>
-  <text>我正在参与特价机票的砍价</text>
   <!-- 票子列表 -->
   <view class="tickets">
     <view class="ticket" wx:for="{{array}}">

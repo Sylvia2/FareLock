@@ -1,5 +1,55 @@
 <!--miniprogram/pages/my/my.wxml-->
-<text>XXXX参与的活动</text>
+<view class="container">
 
+  <view class="navi">
+    <!-- user  -->
+    <view class="userInfo">
+      <view class="userAvatar">
+        <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+      </view>
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+      <view class="slogan">:\n机票砍价</view>
+    </view>
+    <!-- tab -->
+    <view class="tab">
+      <view class="tabItem0 {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">
+        正在参加
+      </view>
+      <view class="tabItem1 {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">
+        订单
+      </view>
+    </view>
+  </view>
+  <!-- 票子列表 -->
 
-<text>XXXX订单</text>
+  <swiper class="tickets" current="{{currentTab}}" duration="300" bindchange="swipeTab">
+    <swiper-item>
+      <view class="ticket">
+        <view class="ticketLeftInfo">
+          <view class="fromToInfo">[[item.from]] -> [[item.to]]</view>
+          <view class="dateInfo">[[item.date]]</view>
+        </view>
+        <view class="ticketRightInfo">
+          <view class="ticketPrice">原价：[[item.price]]</view>
+          <view class="ticketCount">剩余：[[item.remain]]</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="ticket" wx:for="{{array}}">
+        <view class="ticketLeftInfo">
+          <view class="fromToInfo">{{item.from}} -> {{item.to}}</view>
+          <view class="dateInfo">{{item.date}}</view>
+        </view>
+        <view class="ticketRightInfo">
+          <view class="ticketPrice">原价：{{item.price}}</view>
+          <view class="ticketCount">剩余：{{item.remain}}</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- 说明 -->
+  <!-- <view class="tips">
+    <text class="tipsText" space="emsp">说明:\n  1.每人每个航班只能参加一次\n  2.完成砍价后，即可购买\n  3.任何疑问欢迎致电800800800\n  4.最终解释权归FareLock票多多所有</text>
+  </view> -->
+</view>

@@ -1,26 +1,32 @@
 <!--index.wxml-->
 <view class="container">
 
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
-    <open-data type="userNickName"></open-data>
+  <!-- user  -->
+  <view class="userInfo">
+    <view class="userAvatar">
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+    </view>
+    <open-data type="userNickName" lang="zh_CN"></open-data>
+    <view class="slogan">:\n我正在参与特价机票的砍价</view>
   </view>
-  <view class='ticket' wx:for="{{array}}">
-    <view class="itemWrapper">
-      <view class="ticketInfo">
-        <text class="fromToInfo">{{item.from}} -> {{item.to}}</text>
-        <text class="dateInfo">{{item.date}}</text>
+  <!-- 票子列表 -->
+  <view class="tickets">
+    <view class="ticket" wx:for="{{array}}">
+      <view class="ticketLeftInfo">
+        <view class="fromToInfo">{{item.from}} -> {{item.to}}</view>
+        <view class="dateInfo">{{item.date}}</view>
       </view>
-      <text class="ticketPrice">原价：{{item.price}}</text>
-      <button class='cutButton' bindtap='cutTicket' id='{{item._id}}'>
-        9元砍
+      <view class="ticketRightInfo">
+        <view class="ticketPrice">原价：{{item.price}}</view>
+        <view class="ticketCount">剩余：{{item.remain}}</view>
+      </view>
+      <button class="cutButton" bindtap="cutTicket" id="{{item._id}}">
+        <view class="cutButtonText">9元砍</view>
       </button>
     </view>
-    <!-- <text>{{item.from}} TO {{item.to}} | {{item.date}} ￥{{item.price}}</text>
-    <button class='cut' bindtap='cutTicket' id='{{item._id}}'>
-      9元砍
-    </button> -->
   </view>
-
+  <!-- 说明 -->
+  <!-- <view class="tips">
+    <text class="tipsText" space="emsp">说明:\n  1.每人每个航班只能参加一次\n  2.完成砍价后，即可购买\n  3.任何疑问欢迎致电800800800\n  4.最终解释权归FareLock票多多所有</text>
+  </view> -->
 </view>

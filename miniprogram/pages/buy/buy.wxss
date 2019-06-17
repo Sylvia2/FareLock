@@ -1,4 +1,6 @@
-/* miniprogram/pages/cut/cut.wxss */
+/* miniprogram/pages/buy/buy.wxss */
+
+/* miniprogram/pages/buy/buy.wxss */
 @import "../../style/guide.wxss";
 
 .container {
@@ -55,7 +57,7 @@
 
 /****************************************/
 
-.cutPanel {
+.buyPanel {
   flex: 1 0 300rpx;
   width: 100vw;
   background-color: white;
@@ -67,7 +69,7 @@
   align-items: center;
 }
 
-.cutCard {
+.buyCard {
   flex: 0 0 98%;
   width: 95vw;
   margin: 40rpx;
@@ -83,49 +85,27 @@
   align-items: center;
 }
 
-.ticket, .progressBox, .button {
+.input {
+  border: 3rpx solid #fb6;
+  border-radius: 10rpx;
+  padding: 15rpx;
+}
+
+.inputName,
+.inputID,
+.inputPhone,
+.buyButtonWrapper {
   flex: 0 0 auto;
   width: calc(100% - 180rpx);
   margin: 10rpx;
   display: block;
 }
 
-.fromToInfo {
-  width: 100%;
-  font-weight: bold;
-  font-size: 30px;
-  /*flex*/
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.datePriceInfo, .progressInfoWrapper, .cutButtonWrapper {
-  width: 100%;
-  font-size: 20px;
-  /*flex*/
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.progress {
-  width: 100%;
-}
-
-.ticketPrice{
-  color: #f80;
-}
-
-.cutButton {
+.buyButton {
   background-color: #ff7f50;
   color: white;
   font-size: 20px;
-  margin:0rpx;
+  margin: 0rpx;
 }
 
 /****************************************/

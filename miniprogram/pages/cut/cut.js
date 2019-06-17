@@ -155,6 +155,9 @@ cutNow:function(){
                 title: '您已帮助该用户砍价成功', success: res => {
                   console.log('dsds');
                   //用onLoad周期方法重新加载，实现当前页面的刷新
+                  wx.switchTab({
+                    url: '/pages/index/index',
+                  })
                 }
               })
             },
@@ -181,9 +184,15 @@ cutNow:function(){
 
   canjia:function(){
     console.log("dada")
-    wx.redirectTo({
+    wx.switchTab({
       url: '/pages/index/index',
     });
+  },
+
+  buy:function(){
+    wx.navigateTo({
+      url: '/pages/buy/buy',
+    })
   },
 
   /**
@@ -231,7 +240,6 @@ cutNow:function(){
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log("dsdsds");
     var that=this
     var queryBean = {
       "id": that.data.id,

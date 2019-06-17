@@ -6,8 +6,10 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <open-data type="userNickName" lang="zh_CN"></open-data>
-    <view class="slogan">:\n我正在参与特价机票的砍价</view>
+    <view class="slogan">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+      <view>我正在参与特价机票的砍价</view>
+    </view>
   </view>
   <!-- 票子列表 -->
   <view class="tickets">

@@ -239,7 +239,6 @@ cutNow:function(){
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log("dsdsds");
     var that=this
     var queryBean = {
       "id": that.data.id,

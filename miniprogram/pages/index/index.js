@@ -124,6 +124,22 @@ Page({
       }
     })
    
+  },
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
+    var that = this
+    return {
+      title: '这里有特价机票哦',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 
 })

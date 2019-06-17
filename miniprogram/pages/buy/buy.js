@@ -79,7 +79,8 @@ buyTicket:function(e){
           "cardID": that.data.idCard,
           "phone": that.data.phone,
           "from":a.data[0].from,
-          "to":a.data[0].to
+          "to":a.data[0].to,
+          "date":a.data[0].date
         },
         success: function (res) {
           // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

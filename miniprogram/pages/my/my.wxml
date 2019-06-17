@@ -32,6 +32,7 @@
         <view class="fromToInfo">已有{{item.num}}人帮你砍价</view>
         <view class="dateInfo">现价:{{item.price}}</view>
          <view class="dateInfo">原价:{{item.originPrice}}</view>
+          <view class="dateInfo">日期:{{item.date}}</view>
       </view>
     </view>
     </view>
@@ -44,6 +45,7 @@
        <view>目的地:{{item.to}}</view>
       <view>乘机人：{{item.name}}</view>
       <view>联系方式:{{item.phone}}</view>
+        <view class="dateInfo">日期:{{item.date}}</view>
       </view>
     </swiper-item>
   </swiper>

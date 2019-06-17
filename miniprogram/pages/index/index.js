@@ -93,7 +93,8 @@ Page({
                   "name": that.data.name,
                   "from":that.data.ticket.from,
                   "to":that.data.ticket.to,
-                  "originPrice":that.data.ticket.price
+                  "originPrice":that.data.ticket.price,
+                  "date":that.data.ticket.date
                 },
                 success: function (res) {
                   // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

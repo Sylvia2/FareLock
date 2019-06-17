@@ -1,31 +1,50 @@
 <view class="container">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
-  <text class="userinfo" space="emsp">{{nickName}}: \n 我正在参与特价机票的砍价</text>
-  <view class="ticket">
-    <view class="ticketInfo">
-      <text class="fromToInfo">{{ticket.from}} -> {{ticket.to}}</text>
-      <text class="dateInfo">{{ticket.date}}</text>
+  <!-- user  -->
+  <view class="userInfo">
+    <view class="userAvatar">
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <text class="ticketPrice">{{ticket.price}}元</text>
+    <text class="slogan">{{nickName}}: \n我正在参与特价机票的砍价</text>
   </view>
-  <view class="cut">
-    <view class="progressWrapper">
-      <view class="progressInfoWrapper">
-        <progress class="progress" border-radius="10px" percent="{{process}}" stroke-width="25rpx" color="#FF7F50" />
-        <text class="progressInfo">当前剩余票数</text>
+
+  <!-- 秒杀 -->
+  <view class="cutPanel">
+    <view class="cutCard">
+      <!-- 票面信息 -->
+      <view class="ticket">
+        <view class="fromToInfo">
+          <view>{{ticket.from}}</view>
+          <view>-></view>
+          <view>{{ticket.to}}</view>
+        </view>
+        <view class="datePriceInfo">
+          <view class="dateInfo">{{ticket.date}}</view>
+          <view class="ticketPrice">{{ticket.price}}元</view>
+        </view>
       </view>
-      <text class="progressValue">{{ticket.remain}}张</text>
+      <!-- 秒杀进度 -->
+      <view class="progressBox">
+        <progress class="progress" border-radius="5px" percent="{{process}}" stroke-width="50rpx" color="#FF7F50" />
+        <view class="progressInfoWrapper">
+          <view class="progressInfo">当前剩余票数</view>
+          <view class="progressValue">{{ticket.remain}}张</view>
+        </view>
+      </view>
+      <!-- 按钮 -->
+      <view class="button">
+        <view class="cutButtonWrapper" wx:if="{{hasCut==0}}">
+          <button class="cutButton" bindtap='cutNow'>帮他砍价</button>
+        </view>
+        <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
+          <button class="cutButton" bindtap='canjia'>我也要参加</button>
+          <button class="cutButton" bindtap='buy'>购买</button>
+        </view>
+      </view>
     </view>
-    <view class="cutButtonWrapper" wx:if="{{hasCut==0}}">
-      <button class="cutButton" bindtap='cutNow'>帮他砍价</button>
-    </view>
-    <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
-      <button class="cutButton" bindtap='canjia'>我也要参加</button>
-    </view>
-    <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
-      <button class="cutButton" bindtap='buy'>购买</button>
-    </view>
+  </view>
+
+  <!-- 说明 -->
+  <view class="tips">
+    <text class="tipsText" space="emsp">说明:\n  1.每人每个航班只能参加一次\n  2.完成砍价后，即可购买\n  3.任何疑问欢迎致电800800800\n  4.最终解释权归FareLock票多多所有</text>
   </view>
 </view>
-<text class="tips" space="emsp">说明:\n 1.每人每个航班只能参加一次\n 2.完成砍价后，即可购买\n 3.任何疑问欢迎致电800800800\n 4.最终解释权归FareLock票多多所有
-</text>

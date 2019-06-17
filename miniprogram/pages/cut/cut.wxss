@@ -1,131 +1,145 @@
 /* miniprogram/pages/cut/cut.wxss */
 @import "../../style/guide.wxss";
 
-page {
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0rpx;
+  padding: 0rpx;
+  background-color: rgb(246, 246, 246);
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/****************************************/
+
+.userInfo {
+  flex: 0 0 auto;
+  width: 100vw;
+  background-color: rgb(246, 246, 246);
+  z-index: 2000;
+  /* flex */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.userAvatar {
+  flex: 0 0 auto;
+  margin: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
   background-color: white;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  flex-wrap: nowrap;
-  align-items: center;
+.userinfo-avatar:after {
+  border: none;
 }
 
-.userinfo {
-  margin: 20rpx 40rpx 20rpx 40rpx;
-  width: 100%;
-  border-left: none;
-  border-right: none;
-  transition: all 300ms ease;
-  font-size: 23px;
-}
-
-.ticket {
-  width: calc(100vw - 80rpx);
-  margin: 10px 20px 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  transition: all 300ms ease;
-  /* height: 50rpx; *//* width: 80%; *//* background: #f6f6f6; *//* border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1); *//* border-radius: 15px; */
-}
-
-.ticketInfo {
+.slogan {
   flex: 1 0 auto;
+  margin: 20rpx 20rpx 20rpx 0rpx;
+}
+
+/****************************************/
+
+.cutPanel {
+  flex: 1 0 300rpx;
+  width: 100vw;
+  background-color: white;
+  /*flex*/
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: nowrap;
-  align-content: center;
+  align-items: center;
+}
+
+.cutCard {
+  flex: 0 0 98%;
+  width: 95vw;
+  margin: 40rpx;
+  border-radius: 10rpx;
+  border-left: 10rpx solid #fb6;
+  background-color: white;
+  box-shadow: 0px 5rpx 30rpx gray;
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.ticket, .progressBox, .button {
+  flex: 0 0 auto;
+  width: calc(100% - 180rpx);
+  margin: 90rpx;
+  display: block;
 }
 
 .fromToInfo {
+  width: 100%;
   font-weight: bold;
-  font-size: 18px;
-}
-
-.dateInfo {
-  font-size: 15px;
-}
-
-.ticketPrice {
-  flex: 0 0 auto;
-  font-size: 25px;
-}
-
-.cut {
-  margin: 20rpx 0rpx 20rpx 0rpx;
-  /* width: 80%; *//* background: #f6f6f6; *//* border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1); *//* display: flex; *//*flex-direction: row;*/
+  font-size: 30px;
+  /*flex*/
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: start;
-  align-items: center;
-  transition: all 300ms ease;
-  /* border-radius: 15px; */
-}
-
-.progressWrapper {
-  width: calc(100vw - 80rpx);
-  display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
-  transition: all 300ms ease;
 }
 
-.progressInfoWrapper {
-  flex: 1 0 auto;
+.datePriceInfo, .progressInfoWrapper, .cutButtonWrapper {
+  width: 100%;
+  font-size: 20px;
+  /*flex*/
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: nowrap;
-  align-content: center;
-  margin-right: 10rpx;
+  align-items: center;
 }
 
 .progress {
-  margin: 15rpx 5rpx 15rpx 0rpx;
+  width: 100%;
 }
 
-.progressInfo {
-  font-size: 15px;
-}
-
-.progressValue {
-  flex: 0 0 auto;
-  font-size: 25px;
-}
-
-.cutButtonWrapper {
-  display: flex;
-  justify-content: center;
-  flex: 0 0 auto;
-  margin: 40rpx 0rpx 40rpx 0rpx;
+.ticketPrice{
+  color: #f80;
 }
 
 .cutButton {
-  background-color: #ff7f50; /* Green *//* border: none; */
+  background-color: #ff7f50;
   color: white;
-  /* padding: 15px 32px; *//* text-align: center;
-  text-decoration: none;
-  display: inline-block; */
-  font-size: 16px;
+  font-size: 20px;
+  margin:0rpx;
 }
 
+/****************************************/
+
 .tips {
-  position: absolute;
-  bottom: 5px;
-  font-size: 10px;
-  color: gray;
-  margin: 10px 20px 10px 20px;
+  flex: 0 0 auto;
+  width: 100vw;
+  background-color: rgb(246, 246, 246);
 }
+
+.tipsText {
+  font-size: 14px;
+  margin: 20rpx 40rpx 20rpx 40rpx;
+  color: gray;
+}
+
+/****************************************/

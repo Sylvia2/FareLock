@@ -44,6 +44,6 @@
   </swiper>
   <!-- 说明 -->
   <view class="tips">
-    <text class="tipsText" space="emsp">说明:\n 我们将在24小时内联系您，请保持手机畅通</text>
+    <text class="tipsText" space="emsp">重要说明:\n 1、我们客服将在24小时内联系您，请保持手机畅通 \n 2、请确保您所录入的乘机人信息正确无误，若有修改请在下单后两天内联系我们，联系方式：800800800 \n 3、祝您生活愉快</text>
   </view>
 </view>

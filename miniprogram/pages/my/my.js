@@ -72,7 +72,7 @@ Page({
         }).get({
           success: function (a) {
             that.setData({
-              a: a.data
+              buyArray: a.data
             })
           },
           fail: console.error

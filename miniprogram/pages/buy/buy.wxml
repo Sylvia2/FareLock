@@ -5,26 +5,27 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <text class="slogan">{{userInfo.nickName}}: \n填写个人信息</text>
+    <text class="slogan">你好！\n{{userInfo.nickName}}</text>
   </view>
 
   <!-- 信息填写 -->
   <view class="buyPanel">
     <view class="buyCard">
+      <view>请填写乘机人信息</view>
       <!-- 姓名 -->
       <view class="inputName">
         <view>姓名</view>
-        <input class="input"  placeholder="Name" bindinput='getName'></input>
+        <input class="input" placeholder="Name" bindinput='getName'></input>
       </view>
       <!-- 身份证 -->
       <view class="inputID">
         <view>身份证</view>
-        <input class="input"  placeholder="ID Card" bindinput='getID'></input>
+        <input class="input" placeholder="ID Card" bindinput='getID'></input>
       </view>
       <!-- 手机号 -->
       <view class="inputPhone">
         <view>手机号</view>
-        <input class="input"  placeholder="Phone" bindinput='getPhone'></input>
+        <input class="input" placeholder="Phone" bindinput='getPhone'></input>
       </view>
       <!-- 按钮 -->
       <view class="buyButtonWrapper">

@@ -177,13 +177,13 @@
 .ticketRemain {
   font-size: 18px;
   margin: 0rpx 15rpx 15rpx 15rpx;
-  border-top: 5rpx solid #fda;
+  border-top: 2rpx solid rgb(240, 240, 240);
 }
 
 .ticketPassengerPhone {
   font-size: 18px;
   margin: 0rpx 15rpx 15rpx 15rpx;
-  border-top: 5rpx solid #fda;
+  border-top: 2rpx solid rgb(240, 240, 240);
   /*flex*/
   display: flex;
   flex-direction: row;

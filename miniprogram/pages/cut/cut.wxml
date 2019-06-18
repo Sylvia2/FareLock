@@ -4,8 +4,7 @@
     <view class="userAvatar">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
     </view>
-    <open-data type="userNickName" lang="zh_CN"></open-data>
-    <view class="slogan">:\n我正在参与特价机票的砍价</view>
+    <view class="slogan">我正在参与特价机票的砍价</view>
   </view>
 
   <!-- 秒杀 -->
@@ -32,15 +31,20 @@
         </view>
       </view>
       <!-- 按钮 -->
-      <view class="button">
+      <view class="button"  wx:if="{{myCut==1}}">
+         <view class="cutButtonWrapper">
+          <button class="cutButton" bindtap='buy'>立即购买</button>
+        </view>
+      </view>
+      <view class="button"  wx:if="{{myCut==0}}">
         <view class="cutButtonWrapper" wx:if="{{hasCut==0}}">
           <button class="cutButton" bindtap='cutNow'>帮他砍价</button>
         </view>
         <view class="cutButtonWrapper" wx:if="{{hasCut==1}}">
           <button class="cutButton" bindtap='canjia'>我也要参加</button>
-          <button class="cutButton" bindtap='buy'>购买</button>
         </view>
       </view>
+
     </view>
   </view>
 

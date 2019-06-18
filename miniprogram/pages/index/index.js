@@ -73,7 +73,6 @@ Page({
       _id:that.data.id
     }).get({
       success: res => {
-        console.log("sasas");
         this.setData({
           ticket: res.data[0]
         });
@@ -107,7 +106,6 @@ Page({
               "name": that.data.name
             }
             var queryString = JSON.stringify(queryBean);
-            console.log(queryString)
             wx.navigateTo({
               url: '/pages/cut/cut?queryBean=' + queryString,
             })

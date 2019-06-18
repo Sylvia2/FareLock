@@ -11,7 +11,8 @@ Page({
     avatarUrl: './user-unlogin.png',
     userInfo:{},
     id:'',
-    process:0
+    process:0,
+    myCut:0
   },
 
   /**
@@ -29,6 +30,7 @@ Page({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo
               })
+              this.oninit(options);
 
             }
           })
@@ -45,6 +47,7 @@ Page({
                           avatarUrl: res.userInfo.avatarUrl,
                           userInfo: res.userInfo
                         })
+                        this.oninit(options);
 
                       }
                     })
@@ -56,9 +59,13 @@ Page({
         }
       }
     })
+
+  },
+
+  oninit:function (options){
     var that = this
     var bean = JSON.parse(options.queryBean)
-    console.log(bean)
+    console.log("砍价页面的跳转参数:"+bean.name);
     that.setData({
       nickName: bean.name,
       id: bean.id
@@ -71,16 +78,22 @@ Page({
     }).get({
       success: res => {
         db.collection('CutRecord').where({
-          _openid:that.data.userInfo._openid,
-          name:that.data.nickName,
-          flightID:that.data.id
+          _openid: that.data.userInfo._openid,
+          name: that.data.nickName,
+          flightID: that.data.id
         }).get({
           success: res => {
-            console.log(res)
-            if(res.data[0]!=null){
+            console.log("获取当前用户该航班的砍价记录:"+res);
+            if (res.data[0] != null) {
               this.setData({
-                hasCut:1,
+                hasCut: 1,
               })
+              if(that.data.nickName==that.data.userInfo.nickName){
+                that.setData({
+                  myCut:1
+                })
+                console.log("myCut:"+that.data.myCut);
+              }
             }
           },
           fail: err => {
@@ -93,7 +106,7 @@ Page({
         that.setData({
           ticket: res.data[0]
         });
-        console.log(that.data.ticket)
+        console.log("该页面的航班信息"+that.data.ticket);
         db.collection('UserTicket').where({
           name: that.data.nickName,
           flightID: that.data.id
@@ -101,9 +114,9 @@ Page({
           success: res => {
             if (res.data[0] != null) {
               that.setData({
-                process: Math.floor(((that.data.ticket.price - res.data[0].price) / that.data.ticket.price)*100)
+                process: Math.floor(((that.data.ticket.price - res.data[0].price) / that.data.ticket.price) * 100)
               })
-              console.log(that.data.process)
+              console.log("砍价进度:"+that.data.process)
             }
           },
           fail: err => {
@@ -113,7 +126,7 @@ Page({
             })
           }
         })
-        
+
       },
       fail: err => {
         wx.showToast({
@@ -122,7 +135,6 @@ Page({
         })
       }
     })
-
   },
 
 cutNow:function(){

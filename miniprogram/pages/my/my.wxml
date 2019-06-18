@@ -39,19 +39,17 @@
 
     </swiper-item>
     <swiper-item>
-      <view class="ticket" wx:for="{{array}}">
+      <view class="ticket" wx:for="{{buyArray}}">
         <view class="ticketInfo">
           <view class="ticketLeftInfo">
             <view class="fromToInfo">{{item.from}} -> {{item.to}}</view>
             <view class="dateInfo">{{item.date}}</view>
           </view>
-          <view class="ticketRightInfo">
-            <view class="ticketPrice">现价：{{item.price}}</view>
-            <view class="ticketOriginPrice">原价:{{item.originPrice}}</view>
-          </view>
         </view>
         <view class="ticketPassengerPhone">
           <view class="ticketPassenger">乘机人：{{item.name}}</view>
+        </view>
+         <view class="ticketPassengerPhone">
           <view class="ticketPhone">联系方式:{{item.phone}}</view>
         </view>
       </view>

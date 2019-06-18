@@ -19,6 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   wx.showShareMenu({
+     withShareTicket:true
+   })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -251,7 +254,11 @@ cutNow:function(){
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    let pages = getCurrentPages().length - 1;
+    console.log('需要销毁的页面：' + pages);
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
 
   /**
@@ -282,7 +289,19 @@ cutNow:function(){
       title: '快来帮我砍价拿特价机票呀',
       path: '/pages/cut/cut?queryBean='+queryString,
       success: function (res) {
-        // 转发成功
+        var shareTickets=res.shareTickets;
+        if(shareTickets.length==0){
+          return false;
+        }
+        wx.getShareInfo({
+          shareTicket: shareTickets[0],
+          success:function(res){
+            var encryptedData=res.encryptedData;
+            var iv =res.iv;
+            console.log(encryptedData);
+            console.log(iv);
+          }
+        })
       },
       fail: function (res) {
         // 转发失败
